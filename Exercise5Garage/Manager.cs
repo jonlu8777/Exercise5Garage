@@ -12,13 +12,14 @@ namespace Exercise5Garage
       internal void Run()
       {
             IUI ui = new ConsoleUI();
+            ui.SettingsUI("---Create a dream garage--");
             ui.Print("---Welcome---");
             ui.Print("Create a new Garage");
             var name = ui.AskForString("Enter a garage name");
             ui.SettingsUI(name);
             var maximumParkingSpots = ui.AskForInt("Enter the size of your garage");
             IHandler handler = new Handler(name, maximumParkingSpots); //Ett nytt Garage skapas i Handlers construktor
-            ui.Print($"Sucess {name} was created with {maximumParkingSpots} parking spots");
+            ui.Print($"---Success--- \n{name} has been created \n{maximumParkingSpots} parking spots available \n-------------");
             do
             {
                 ui.GetInput(); //avvakta användaren varje do loop
@@ -50,7 +51,7 @@ namespace Exercise5Garage
                                handler.Park(ui.CreateAirplane());
                               ui.Print("--Vehicle parked--");
                         }
-                          else ui.Print("---Garage is full---"); 
+                          else ui.Print($"---{name} is full---"); 
                     break;
                     case "3":
                         ui.Clear();
@@ -63,7 +64,7 @@ namespace Exercise5Garage
                             ui.Clear();
                             ui.Print(handler.RemoveVehicle(regNr));
                         }
-                        else ui.Print("--Garage was empty---");
+                        else ui.Print($"---{name} was empty---");
                         break;
                     case "4":
                         ui.Clear();
@@ -73,7 +74,7 @@ namespace Exercise5Garage
                             ui.Print("--Print All Vehicles--");
                             ui.PrintAll(handler.GetAllVehiclesAtGarageEnumerator()); //hämtar hela listan, lämnar till ui.PrintAll
                         }
-                        else ui.Print("---Garage is empty---");
+                        else ui.Print($"---{name} was empty---");
                         break;
                     case "5": //Filtrera på färg -> hjul -> typ
                         ui.Clear();
@@ -94,20 +95,19 @@ namespace Exercise5Garage
                             ui.PrintAll(listColorWheelsType);
                             ui.Print("---Finished---");
                         }
-                        else ui.Print("---Garage was is empty of vehicles---");
+                        else ui.Print($"---{name} was empty---");
                         break;
                     case "6": //Statestik 
                         ui.Clear();
                         if (!handler.IsGarageEmpty)
                         {
-                            ui.Print("Statistics");
                             ui.Print(handler.Stats());
                         }
-                        else ui.Print("---Garage was is empty of vehicles---");
+                        else ui.Print($"---{name} was empty---");
                         break;
                     case "7":
                         // Exit application
-                        ui.Print("Exit");
+                        ui.Print("--Goodbye---");
                         Environment.Exit(0); 
                         break;
                 }

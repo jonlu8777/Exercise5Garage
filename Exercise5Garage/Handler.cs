@@ -18,11 +18,8 @@ namespace Exercise5Garage
     public class Handler:IHandler 
     {
         private IGarage<IVehicle> myGarage;
-        
-        
         public bool IsGaragefull 
         {
-            
             get 
             {
                 if(myGarage.CountVehicles==myGarage.MaximumParkingSpots)
@@ -89,18 +86,17 @@ namespace Exercise5Garage
         { 
             if (0 < myGarage.CountVehicles)// mer vehicles än 0. dvs 1. 
             {
-                var workingList = myGarage.GetIEnumerable().ToList().Where(Item => Item != null);
-                var pls = workingList.Where(Item => Item.RegistrationNumber != regNr2).ToList();
+                var workingList = myGarage.GetIEnumerable().Where(Item => Item != null).ToList(); //Tolist();
+                var pls = workingList.Where(Item => Item.RegistrationNumber != regNr2); 
                 var removed = workingList.FirstOrDefault(Item => Item.RegistrationNumber == regNr2);
                 if (removed == null)
                     return "--Your vehicle was not found in our very long list--";
                 myGarage.ClearGarageArray();// Måste Tömma Arrayen först 
                 foreach (var v in pls) // fylla på nytt, men utan fordonet vi tog bort
                 {
-                    if (myGarage.CountVehicles < myGarage.MaximumParkingSpots)
+                   // if (myGarage.CountVehicles < myGarage.MaximumParkingSpots)
                         myGarage.AddVehicle(v);
                 }
-                
                 return $"{removed.ToString()} --- was removed from garage ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})"; //skriver ut vilken vehicle som avslutade parkering
             }else return $"Garage was already empty"; //Garaget var redan tomt 
         }
@@ -173,10 +169,10 @@ namespace Exercise5Garage
             var nrWheelsFour = listOfstats.Where(Item => Item.NumberOfWheels >= 4).Count();
             var nrWheelsTen = listOfstats.Where(Item => Item.NumberOfWheels >= 10).Count();
           
-
             string statsWheels = $" Two wheels: {nrWheelsTwo} \n Four wheels :{nrWheelsfour} \n Four and more: {nrWheelsFour} \n Ten and more: {nrWheelsTen} \n";
             string parkingStatus =$"\n Parking status: ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})";
-            return string.Concat(statsType,statsColor, statsWheels,parkingStatus);
+
+            return string.Concat("----STATISTICS---- \n",statsType,statsColor, statsWheels,parkingStatus); //CONCAT ALLT! 
         }
     }
 }

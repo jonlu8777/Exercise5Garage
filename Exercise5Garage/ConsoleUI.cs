@@ -13,9 +13,7 @@ namespace Exercise5Garage
     {
         public ConsoleUI()
         {
-
         }
-
         public void SettingsUI(string name)
         {
             Console.CursorVisible = false;
@@ -60,7 +58,6 @@ namespace Exercise5Garage
             }
             while (true);
         }
-
         public void PrintMainMeny()
         {
             Console.WriteLine("-------------------------------");
@@ -111,7 +108,6 @@ namespace Exercise5Garage
                     }
             } while (true);
         }
-
         public string AskForRegistrationNr()
         {
 
@@ -149,7 +145,6 @@ namespace Exercise5Garage
             int nrPicked;
             do
             {
-               
                 Print("1. Car");
                 Print("2. Boat");
                 Print("3. Bus");
@@ -158,9 +153,7 @@ namespace Exercise5Garage
                 nrPicked = AskForInt($"Pick what vehicle (int) you want to choose");
             } while (nrPicked < 0 || nrPicked > 5);
             return nrPicked;
-
         }
-
         public Bus CreateBus()
         {
             Print("--Add Vehicle--");
@@ -173,7 +166,6 @@ namespace Exercise5Garage
             Bus bus = new Bus(numberOfSeats, regNr, color, numberOfWheels);
             return bus;
         }
-
         public Boat CreateBoat()
         { 
         Print("--Add Vehicle--");
