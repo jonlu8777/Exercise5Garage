@@ -14,7 +14,7 @@ using System.Xml.Linq;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace Exercise5Garage
-{
+{ 
     public class Handler:IHandler 
     {
         private IGarage<IVehicle> myGarage;
@@ -39,10 +39,8 @@ namespace Exercise5Garage
         }
         public Handler(string name, int maximumParkingSpots) 
         {
-
             this.myGarage = new Garage<IVehicle>(name, maximumParkingSpots);
         }
-
         public string SeedData()
         {
             if (IsGaragefull)
@@ -82,7 +80,6 @@ namespace Exercise5Garage
         {
            return myGarage.Where(I => I != null); 
         }
-
         public string RemoveVehicle(string regNr2) // ok! 
         { 
             if (0 < myGarage.CountVehicles)// mer vehicles än 0. dvs 1. 

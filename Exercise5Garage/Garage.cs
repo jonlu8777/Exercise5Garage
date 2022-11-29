@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.AccessControl;
 
 namespace Exercise5Garage
 {
@@ -11,15 +12,16 @@ namespace Exercise5Garage
     {
         private T[] vehicles;
         private readonly int maximumParkingSpots;
-        public int CountVehicles { get; set; }
+        public int CountVehicles { get; private set; }
         public int MaximumParkingSpots { get { return maximumParkingSpots; } }
-        public string Name { get; set; }
+        public string Name { get; }
         public Garage(string name, int maximumParkingSpots)
         {
             CountVehicles = 0;
             this.maximumParkingSpots = maximumParkingSpots;
             this.vehicles = new T[maximumParkingSpots];
             this.Name = name;
+            
         }
         public void AddVehicle(T vehicle) //Park a new vechile.
         {
@@ -45,6 +47,5 @@ namespace Exercise5Garage
         {
             return GetEnumerator();
         }
-
     }
 }
