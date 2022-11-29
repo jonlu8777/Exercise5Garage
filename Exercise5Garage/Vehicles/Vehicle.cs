@@ -35,17 +35,6 @@ namespace Exercise5Garage.Vehicles
 
         }
 
-      
-
-        //public IEnumerator<Vehicle> GetEnumerator()
-        //{
-
-        //    throw new NotImplementedException();
-        //}
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
     }
 }

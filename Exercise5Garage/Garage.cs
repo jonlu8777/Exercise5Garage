@@ -30,7 +30,7 @@ namespace Exercise5Garage
             Array.Clear(vehicles, 0, CountVehicles);
             CountVehicles = 0;
         }
-        public IEnumerable<T> GetIEnumerable()  //NYA TAG TORSDAG!
+        private IEnumerable<T> GetIEnumerable()  
         {
             foreach (var v in vehicles)
             {
@@ -39,11 +39,11 @@ namespace Exercise5Garage
         }
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetIEnumerable().GetEnumerator();
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
     }

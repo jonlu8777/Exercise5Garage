@@ -209,7 +209,6 @@ namespace Exercise5Garage
             return new Motorcycle(sizeOfEngine, regNr, color, numberOfWheels);
 
         }
-
       
     }
 }

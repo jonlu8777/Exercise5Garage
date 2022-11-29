@@ -77,27 +77,28 @@ namespace Exercise5Garage
             return $"Garage is not full ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})"; //Number of Vehciles in Array
 
 
-        } 
+        }
         public IEnumerable<IVehicle> GetAllVehiclesAtGarageEnumerator()
         {
-            return myGarage.GetIEnumerable().Where(I => I != null);
-        } 
+           return myGarage.Where(I => I != null); 
+        }
+
         public string RemoveVehicle(string regNr2) // ok! 
         { 
             if (0 < myGarage.CountVehicles)// mer vehicles än 0. dvs 1. 
             {
-                var workingList = myGarage.GetIEnumerable().Where(Item => Item != null).ToList(); //Tolist();
-                var pls = workingList.Where(Item => Item.RegistrationNumber != regNr2); 
-                var removed = workingList.FirstOrDefault(Item => Item.RegistrationNumber == regNr2);
-                if (removed == null)
+                var parkedVehicles = myGarage.Where(Item => Item != null).ToList(); //Tolist och ta bort alla null i arrayen!!
+                var parkedVehiclesRemainder = parkedVehicles.Where(Item => Item.RegistrationNumber != regNr2); 
+                var removedVehicle = parkedVehicles.FirstOrDefault(Item => Item.RegistrationNumber == regNr2);
+                if (removedVehicle == null)
                     return "--Your vehicle was not found in our very long list--";
                 myGarage.ClearGarageArray();// Måste Tömma Arrayen först 
-                foreach (var v in pls) // fylla på nytt, men utan fordonet vi tog bort
+                foreach (var v in parkedVehiclesRemainder) // fylla på nytt, men utan fordonet vi tog bort (Reaminder) dvs resten
                 {
                    // if (myGarage.CountVehicles < myGarage.MaximumParkingSpots)
                         myGarage.AddVehicle(v);
                 }
-                return $"{removed.ToString()} --- was removed from garage ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})"; //skriver ut vilken vehicle som avslutade parkering
+                return $"{removedVehicle.ToString()} --- was removed from garage ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})"; //skriver ut vilken vehicle som avslutade parkering
             }else return $"Garage was already empty"; //Garaget var redan tomt 
         }
         public void Park(IVehicle vehicle) 
@@ -106,14 +107,12 @@ namespace Exercise5Garage
         }
         public IEnumerable<IVehicle> QuaryByColor(string color)
         {
-                var listtt = myGarage.GetIEnumerable().Where(I => I != null).ToList();
+                var listtt = myGarage.Where(I => I != null).ToList();
 
                 var listtColor = from Vehicle in listtt
                                  where Vehicle.Color == color
                                  select Vehicle;
-
                 return listtColor;
-             
         }
         public IEnumerable<IVehicle> QuaryByColorWheel(IEnumerable <IVehicle> listtColor, int wheels)
         {
@@ -146,7 +145,7 @@ namespace Exercise5Garage
             
         public string Stats()
         {
-            var listOfstats = myGarage.GetIEnumerable().Where(I => I != null).ToList();
+            var listOfstats = myGarage.Where(I => I != null).ToList();
 
             //Type
             var numberOfCars = listOfstats.Where(Item => Item is Car).Count();

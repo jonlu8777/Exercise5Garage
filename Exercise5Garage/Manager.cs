@@ -11,6 +11,7 @@ namespace Exercise5Garage
     {
       internal void Run()
       {
+            
             IUI ui = new ConsoleUI();
             ui.SettingsUI("---Create a dream garage--");
             ui.Print("---Welcome---");
@@ -76,7 +77,7 @@ namespace Exercise5Garage
                         }
                         else ui.Print($"---{name} was empty---");
                         break;
-                    case "5": //Filtrera på färg -> hjul -> typ
+                    case "5": //Quary på färg -> hjul -> typ
                         ui.Clear();
                         if (!handler.IsGarageEmpty)
                         {

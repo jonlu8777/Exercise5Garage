@@ -12,6 +12,7 @@ namespace Exercise5Garage
     
         public void ClearGarageArray();
      
-        public IEnumerable<T> GetIEnumerable();
+        //public IEnumerable<T> GetIEnumerable();
+        public IEnumerator<T> GetEnumerator();
     }
 }
