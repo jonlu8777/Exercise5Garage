@@ -71,10 +71,7 @@ namespace Exercise5Garage
                     myGarage.AddVehicle(vehicle);//lägg till i arrayen[] garage om true
                 else return $"Garage is full ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})";
             }
-
             return $"Garage is not full ({myGarage.CountVehicles}/{myGarage.MaximumParkingSpots})"; //Number of Vehciles in Array
-
-
         }
         public IEnumerable<IVehicle> GetAllVehiclesAtGarageEnumerator()
         {
@@ -120,7 +117,6 @@ namespace Exercise5Garage
                return listColorWheels;
           
         }
-
         public IEnumerable<IVehicle> QuaryByColorWheelType(IEnumerable <IVehicle> listColorWheels, int typeParked)
         { 
                 //--- Filter by color and wheels and now also type (car, boat etc)
@@ -139,7 +135,6 @@ namespace Exercise5Garage
                 }
             return null!;   
         }
-            
         public string Stats()
         {
             var listOfstats = myGarage.Where(I => I != null).ToList();

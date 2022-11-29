@@ -11,7 +11,6 @@ namespace Exercise5Garage
     {
       internal void Run()
       {
-            
             IUI ui = new ConsoleUI();
             ui.SettingsUI("---Create a dream garage--");
             ui.Print("---Welcome---");
@@ -108,7 +107,7 @@ namespace Exercise5Garage
                         break;
                     case "7":
                         // Exit application
-                        ui.Print("--Goodbye---");
+                        ui.Print("---Goodbye---");
                         Environment.Exit(0); 
                         break;
                 }
